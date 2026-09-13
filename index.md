@@ -1,9 +1,9 @@
 ---
 layout: home
 title: 首页
-headline: "你好，我在这里记录想法、学习和作品。"
-intro: "一个基于 GitHub Pages 的个人博客，适合发布 Markdown 文章、图文笔记、代码片段和 LaTeX 公式。"
-panel_label: "当前主题"
-panel_title: "学习笔记 / 作品记录"
-panel_text: "界面更紧凑，标题、摘要、日期和标签集中呈现，适合持续更新。"
+headline: "16752plus1"
+intro: "个人主页与博客：记录学习、想法、项目和图文笔记。页面参考高星 Jekyll 个人主页模板 al-folio 的清爽结构，并保留轻量 Markdown 写作方式。"
+panel_label: "Now"
+panel_title: "轻量、紧凑、可持续更新"
+panel_text: "文章、图片、公式和代码都可以直接通过 GitHub Pages 发布。"
 ---
