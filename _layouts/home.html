@@ -3,30 +3,41 @@ layout: default
 ---
 
 <main class="page-shell">
-  <section class="hero">
-    <div>
-      <p class="eyebrow">Personal Blog</p>
-      <h1>{{ page.headline | default: "你好，我在这里记录想法、学习和作品。" }}</h1>
+  <section class="profile-hero" aria-label="个人主页">
+    <div class="profile-copy">
+      <p class="eyebrow">Personal Homepage</p>
+      <h1>{{ page.headline | default: site.title }}</h1>
+      <p>{{ page.intro | default: site.description }}</p>
+      <div class="quick-links" aria-label="快捷入口">
+        <a href="{{ '/about/' | relative_url }}">关于我</a>
+        <a href="#latest-posts">最新文章</a>
+        <a href="https://github.com/16752plus1">GitHub</a>
+      </div>
     </div>
-    <p class="hero-copy">{{ page.intro | default: site.description }}</p>
+
+    <aside class="profile-card">
+      <img src="https://github.com/16752plus1.png" alt="16752plus1 的 GitHub 头像">
+      <h2>{{ site.author | default: site.title }}</h2>
+      <p>{{ page.panel_text | default: "记录学习、想法、项目和图文笔记。" }}</p>
+    </aside>
   </section>
 
-  <section class="content-grid" aria-label="博客内容">
-    <aside class="profile-panel">
-      <p class="panel-label">{{ page.panel_label | default: "当前主题" }}</p>
-      <h2>{{ page.panel_title | default: "学习笔记 / 作品记录" }}</h2>
-      <p>{{ page.panel_text | default: "界面更紧凑，标题、摘要、日期和标签集中呈现，适合持续更新。" }}</p>
-    </aside>
+  <section class="home-sections">
+    <section class="note-panel">
+      <p class="panel-label">{{ page.panel_label | default: "About" }}</p>
+      <h2>{{ page.panel_title | default: "这里是我的公开笔记本" }}</h2>
+      <p>{{ page.panel_text | default: "保持轻量、清晰和可持续更新：文章、图片、公式和代码都可以放在这里。" }}</p>
+    </section>
 
-    <section class="post-list" aria-labelledby="latest-posts">
+    <section class="post-list compact" aria-labelledby="latest-posts">
       <div class="section-heading">
-        <h2 id="latest-posts">最新文章</h2>
-        <span>{{ site.posts | size }} 篇</span>
+        <h2 id="latest-posts">Latest Posts</h2>
+        <span>{{ site.posts | size }} posts</span>
       </div>
 
       {% for post in site.posts %}
-        <a class="post-card" href="{{ post.url | relative_url }}">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <a class="post-row" href="{{ post.url | relative_url }}">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
           <div>
             <h3>{{ post.title }}</h3>
             {% if post.description %}
