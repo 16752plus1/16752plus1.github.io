@@ -2,59 +2,64 @@
 layout: default
 ---
 
-<main class="page-shell">
-  <section class="profile-hero" aria-label="个人主页">
-    <div class="profile-copy">
-      <p class="eyebrow">Personal Homepage</p>
-      <h1>{{ page.headline | default: site.title }}</h1>
-      <p>{{ page.intro | default: site.description }}</p>
-      <div class="quick-links" aria-label="快捷入口">
-        <a href="{{ '/about/' | relative_url }}">关于我</a>
-        <a href="#latest-posts">最新文章</a>
-        <a href="https://github.com/16752plus1">GitHub</a>
-      </div>
-    </div>
-
-    <aside class="profile-card">
+<main class="page-shell academic-home">
+  <section class="academic-profile" aria-label="学术主页简介">
+    <aside class="profile-sidebar">
       <img src="https://github.com/16752plus1.png" alt="16752plus1 的 GitHub 头像">
       <h2>{{ site.author | default: site.title }}</h2>
-      <p>{{ page.panel_text | default: "记录学习、想法、项目和图文笔记。" }}</p>
+      <p>{{ page.role | default: "Student / Research Notes" }}</p>
+      <div class="profile-links" aria-label="个人链接">
+        <a href="https://github.com/16752plus1">GitHub</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="#latest-posts">Posts</a>
+      </div>
     </aside>
+
+    <div class="profile-main">
+      <p class="eyebrow">Academic Homepage</p>
+      <h1>{{ page.headline | default: site.title }}</h1>
+      <p class="lead">{{ page.intro | default: site.description }}</p>
+
+      <section class="academic-section">
+        <h2>Research Interests</h2>
+        <p>{{ page.research | default: "学习记录、项目实践、数学公式、编程笔记与图文写作。" }}</p>
+      </section>
+
+      <section class="academic-section">
+        <h2>Recent Updates</h2>
+        <ul class="update-list">
+          <li>整理个人主页结构，使博客更适合长期学术记录和项目展示。</li>
+          <li>保留 GitHub Pages + Markdown 工作流，方便直接发布图文内容。</li>
+        </ul>
+      </section>
+    </div>
   </section>
 
-  <section class="home-sections">
-    <section class="note-panel">
-      <p class="panel-label">{{ page.panel_label | default: "About" }}</p>
-      <h2>{{ page.panel_title | default: "这里是我的公开笔记本" }}</h2>
-      <p>{{ page.panel_text | default: "保持轻量、清晰和可持续更新：文章、图片、公式和代码都可以放在这里。" }}</p>
-    </section>
+  <section class="post-list academic-posts" aria-labelledby="latest-posts">
+    <div class="section-heading">
+      <h2 id="latest-posts">Recent Posts</h2>
+      <span>{{ site.posts | size }} posts</span>
+    </div>
 
-    <section class="post-list compact" aria-labelledby="latest-posts">
-      <div class="section-heading">
-        <h2 id="latest-posts">Latest Posts</h2>
-        <span>{{ site.posts | size }} posts</span>
-      </div>
-
-      {% for post in site.posts %}
-        <a class="post-row" href="{{ post.url | relative_url }}">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-          <div>
-            <h3>{{ post.title }}</h3>
-            {% if post.description %}
-              <p>{{ post.description }}</p>
-            {% endif %}
-            {% if post.tags %}
-              <span class="tag-row">
-                {% for tag in post.tags limit: 3 %}
-                  <span>{{ tag }}</span>
-                {% endfor %}
-              </span>
-            {% endif %}
-          </div>
-        </a>
-      {% else %}
-        <p class="empty-state">还没有文章。可以先在 <code>_posts</code> 文件夹里新建一篇 Markdown。</p>
-      {% endfor %}
-    </section>
+    {% for post in site.posts %}
+      <a class="post-row" href="{{ post.url | relative_url }}">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+        <div>
+          <h3>{{ post.title }}</h3>
+          {% if post.description %}
+            <p>{{ post.description }}</p>
+          {% endif %}
+          {% if post.tags %}
+            <span class="tag-row">
+              {% for tag in post.tags limit: 3 %}
+                <span>{{ tag }}</span>
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+      </a>
+    {% else %}
+      <p class="empty-state">还没有文章。可以先在 <code>_posts</code> 文件夹里新建一篇 Markdown。</p>
+    {% endfor %}
   </section>
 </main>
