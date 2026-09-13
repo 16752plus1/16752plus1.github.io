@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">示例博客配图</title>
+  <desc id="desc">一个用于测试图文排版的简洁示例图。</desc>
+  <rect width="960" height="540" fill="#f4f1ea"/>
+  <rect x="72" y="72" width="816" height="396" rx="8" fill="#ffffff" stroke="#1c2b2d" stroke-width="4"/>
+  <circle cx="210" cy="210" r="76" fill="#2f80ed"/>
+  <rect x="342" y="154" width="380" height="28" fill="#1c2b2d"/>
+  <rect x="342" y="214" width="486" height="20" fill="#7a8a8f"/>
+  <rect x="342" y="258" width="430" height="20" fill="#7a8a8f"/>
+  <path d="M132 398h696" stroke="#e0a458" stroke-width="18" stroke-linecap="round"/>
+</svg>
