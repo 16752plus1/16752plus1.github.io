@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>写作入口 · 我的个人博客</title>
+    <style>
+      :root {
+        --bg: #fbfaf7;
+        --text: #1c2b2d;
+        --muted: #657174;
+        --line: #d8d2c6;
+        --accent: #2f80ed;
+        --accent-dark: #1861b5;
+        --surface: #ffffff;
+        --danger: #b42318;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+        line-height: 1.6;
+      }
+
+      header,
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        line-height: 1.25;
+      }
+
+      h1 {
+        font-size: clamp(28px, 5vw, 44px);
+      }
+
+      main {
+        padding: 34px 0 54px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .section {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section:last-child {
+        border-bottom: 0;
+      }
+
+      label {
+        display: block;
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #fff;
+        color: var(--text);
+        font: inherit;
+      }
+
+      input {
+        height: 42px;
+        padding: 0 12px;
+      }
+
+      textarea {
+        min-height: 420px;
+        padding: 13px;
+        resize: vertical;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      button {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 8px 13px;
+      }
+
+      button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+
+      button.primary:hover {
+        background: var(--accent-dark);
+      }
+
+      .help {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .status {
+        min-height: 48px;
+        margin: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .status.error {
+        color: var(--danger);
+      }
+
+      .preview {
+        max-height: 560px;
+        overflow: auto;
+      }
+
+      .preview article {
+        padding: 18px;
+      }
+
+      .preview h1,
+      .preview h2,
+      .preview h3 {
+        margin-top: 20px;
+      }
+
+      .preview img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .small-list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        header {
+          flex-direction: column;
+        }
+
+        .grid,
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <p class="muted">Private Studio</p>
+        <h1>写作入口</h1>
+      </div>
+      <div>
+        <a href="/">返回博客首页</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div class="panel">
+          <div class="section">
+            <div class="row">
+              <div>
+                <label for="title">文章标题</label>
+                <input id="title" placeholder="例如：我的第一篇研究笔记">
+              </div>
+              <div>
+                <label for="date">发布日期</label>
+                <input id="date" type="date">
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="row">
+              <div>
+                <label for="slug">文章链接名</label>
+                <input id="slug" placeholder="例如：my-research-note">
+                <p class="help">建议只用英文、小写数字和短横线。</p>
+              </div>
+              <div>
+                <label for="description">文章简介</label>
+                <input id="description" placeholder="一句话摘要，会显示在文章列表里">
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <label for="body">正文</label>
+            <textarea id="body" spellcheck="false" placeholder="在这里写 Markdown。支持图片、公式、代码块。"></textarea>
+            <p class="help">行内公式写作 $E = mc^2$，独立公式写作 $$...$$。</p>
+          </div>
+
+          <div class="section">
+            <label for="images">图片</label>
+            <input id="images" type="file" accept="image/*" multiple>
+            <p class="help">选择图片后，发布时会上传到 <code>assets/images/</code>，并自动在正文末尾插入引用。</p>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div class="section">
+            <h2>发布设置</h2>
+            <p class="help">Token 只用于本次浏览器请求，不会写进博客仓库。建议使用 GitHub Fine-grained token，只给这个仓库 Contents 读写权限。</p>
+          </div>
+
+          <div class="section">
+            <label for="token">GitHub Token</label>
+            <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+            <ul class="small-list">
+              <li>Repository：16752plus1.github.io</li>
+              <li>Permission：Contents，Read and write</li>
+              <li>不要把 Token 写进文章或分享给别人</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="actions">
+              <button id="previewButton">预览</button>
+              <button id="draftButton">插入模板</button>
+              <button id="publishButton" class="primary">发布到博客</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <p id="status" class="status muted">准备就绪。</p>
+          </div>
+
+          <div class="section preview">
+            <h2>预览</h2>
+            <article id="preview"></article>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script>
+      const owner = "16752plus1";
+      const repo = "16752plus1.github.io";
+      const branch = "main";
+
+      const fields = {
+        title: document.getElementById("title"),
+        date: document.getElementById("date"),
+        slug: document.getElementById("slug"),
+        description: document.getElementById("description"),
+        body: document.getElementById("body"),
+        images: document.getElementById("images"),
+        token: document.getElementById("token"),
+        status: document.getElementById("status"),
+        preview: document.getElementById("preview")
+      };
+
+      fields.date.value = new Date().toISOString().slice(0, 10);
+
+      function setStatus(message, isError = false) {
+        fields.status.textContent = message;
+        fields.status.classList.toggle("error", isError);
+        fields.status.classList.toggle("muted", !isError);
+      }
+
+      function slugify(value) {
+        return value
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .slice(0, 80);
+      }
+
+      fields.title.addEventListener("input", () => {
+        if (!fields.slug.dataset.edited) fields.slug.value = slugify(fields.title.value);
+      });
+
+      fields.slug.addEventListener("input", () => {
+        fields.slug.dataset.edited = "true";
+      });
+
+      function markdownToHtml(markdown) {
+        return markdown
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+          .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+          .replace(/^# (.*)$/gm, "<h1>$1</h1>")
+          .replace(/!\[(.*?)\]\((.*?)\)/g, '<img alt="$1" src="$2">')
+          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\n{2,}/g, "</p><p>")
+          .replace(/\n/g, "<br>");
+      }
+
+      function renderPreview() {
+        fields.preview.innerHTML = `<h1>${fields.title.value || "未命名文章"}</h1><p>${markdownToHtml(fields.body.value || "正文预览会显示在这里。")}</p>`;
+      }
+
+      document.getElementById("previewButton").addEventListener("click", renderPreview);
+
+      document.getElementById("draftButton").addEventListener("click", () => {
+        fields.body.value += `${fields.body.value ? "\n\n" : ""}## 小标题\n\n这里写你的正文。\n\n行内公式：$E = mc^2$\n\n独立公式：\n\n$$\nP(A \\mid B) = \\frac{P(B \\mid A)P(A)}{P(B)}\n$$\n`;
+        renderPreview();
+      });
+
+      function textToBase64(text) {
+        const bytes = new TextEncoder().encode(text);
+        let binary = "";
+        bytes.forEach((byte) => {
+          binary += String.fromCharCode(byte);
+        });
+        return btoa(binary);
+      }
+
+      function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result).split(",")[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      async function githubRequest(path, options = {}) {
+        const token = fields.token.value.trim();
+        if (!token) throw new Error("请先粘贴 GitHub Token。");
+
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+          ...options,
+          headers: {
+            Accept: "application/vnd.github+json",
+            Authorization: `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28",
+            ...(options.headers || {})
+          }
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const message = data.message || `GitHub 请求失败：${response.status}`;
+          throw new Error(message);
+        }
+        return data;
+      }
+
+      async function getExistingSha(path) {
+        try {
+          const existing = await githubRequest(path);
+          return existing.sha;
+        } catch (error) {
+          if (/not found/i.test(error.message)) return null;
+          throw error;
+        }
+      }
+
+      async function putFile(path, contentBase64, message) {
+        const sha = await getExistingSha(path);
+        const body = {
+          message,
+          content: contentBase64,
+          branch
+        };
+        if (sha) body.sha = sha;
+
+        return githubRequest(path, {
+          method: "PUT",
+          body: JSON.stringify(body)
+        });
+      }
+
+      function buildPost(imageMarkdown) {
+        const title = fields.title.value.trim();
+        const description = fields.description.value.trim();
+        if (!title) throw new Error("请填写文章标题。");
+
+        const slug = slugify(fields.slug.value || title);
+        if (!slug) throw new Error("请填写英文或拼音形式的文章链接名。");
+
+        const date = fields.date.value || new Date().toISOString().slice(0, 10);
+        const body = fields.body.value.trim();
+        if (!body) throw new Error("请填写正文。");
+
+        const path = `_posts/${date}-${slug}.md`;
+        const markdown = `---\ntitle: "${title.replaceAll('"', '\\"')}"\ndescription: "${description.replaceAll('"', '\\"')}"\n---\n\n${body}${imageMarkdown ? `\n\n${imageMarkdown}` : ""}\n`;
+        return { path, markdown, date, slug };
+      }
+
+      async function publish() {
+        try {
+          setStatus("正在准备文章...");
+          const imageLines = [];
+          const files = Array.from(fields.images.files || []);
+          const date = fields.date.value || new Date().toISOString().slice(0, 10);
+
+          for (const file of files) {
+            const safeName = file.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-");
+            const imagePath = `assets/images/${date}-${Date.now()}-${safeName}`;
+            setStatus(`正在上传图片：${file.name}`);
+            await putFile(imagePath, await fileToBase64(file), `Upload image ${safeName}`);
+            imageLines.push(`![${file.name}]({{ '/${imagePath}' | relative_url }})`);
+          }
+
+          const post = buildPost(imageLines.join("\n\n"));
+          setStatus(`正在发布文章：${post.path}`);
+          await putFile(post.path, textToBase64(post.markdown), `Publish ${fields.title.value.trim()}`);
+          setStatus(`发布成功。\n几分钟后访问：/${post.date.replaceAll("-", "/")}/${post.slug}/`);
+        } catch (error) {
+          setStatus(error.message, true);
+        }
+      }
+
+      document.getElementById("publishButton").addEventListener("click", publish);
+      renderPreview();
+    </script>
+  </body>
+</html>
