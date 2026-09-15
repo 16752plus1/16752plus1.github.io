@@ -1,26 +1,12 @@
-title: "我的个人博客"
+title: "16752plus1"
 description: "记录学习、想法和研究笔记"
-author: "你的名字"
-lang: "zh-CN"
-timezone: "Asia/Shanghai"
-
+author: "16752plus1"
 url: "https://16752plus1.github.io"
 baseurl: ""
 
 markdown: kramdown
 kramdown:
+  input: GFM
   math_engine: mathjax
-  syntax_highlighter: rouge
 
 permalink: /:year/:month/:day/:title/
-
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "你的名字"
-
-exclude:
-  - README.md
