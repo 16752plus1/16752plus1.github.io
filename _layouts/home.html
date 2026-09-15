@@ -2,12 +2,12 @@
 layout: default
 ---
 
-<main class="page-shell academic-home">
-  <section class="academic-profile" aria-label="学术主页简介">
+<main class="page-shell home-page">
+  <section class="profile-layout" aria-label="主页简介">
     <aside class="profile-sidebar">
       <img src="https://github.com/16752plus1.png" alt="16752plus1 的 GitHub 头像">
       <h2>{{ site.author | default: site.title }}</h2>
-      <p>{{ page.role | default: "Student / Research Notes" }}</p>
+      <p>{{ page.role | default: "Personal Homepage" }}</p>
       <div class="profile-links" aria-label="个人链接">
         <a href="https://github.com/16752plus1">GitHub</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
@@ -16,26 +16,26 @@ layout: default
     </aside>
 
     <div class="profile-main">
-      <p class="eyebrow">Academic Homepage</p>
+      <p class="eyebrow">Homepage</p>
       <h1>{{ page.headline | default: site.title }}</h1>
       <p class="lead">{{ page.intro | default: site.description }}</p>
 
-      <section class="academic-section">
+      <section class="home-section">
         <h2>Research Interests</h2>
         <p>{{ page.research | default: "学习记录、项目实践、数学公式、编程笔记与图文写作。" }}</p>
       </section>
 
-      <section class="academic-section">
+      <section class="home-section">
         <h2>Recent Updates</h2>
         <ul class="update-list">
-          <li>整理个人主页结构，使博客更适合长期学术记录和项目展示。</li>
+          <li>整理个人主页结构，使博客更适合长期记录和项目展示。</li>
           <li>保留 GitHub Pages + Markdown 工作流，方便直接发布图文内容。</li>
         </ul>
       </section>
     </div>
   </section>
 
-  <section class="post-list academic-posts" aria-labelledby="latest-posts">
+  <section class="post-list recent-posts" aria-labelledby="latest-posts">
     <div class="section-heading">
       <h2 id="latest-posts">Recent Posts</h2>
       <span>{{ site.posts | size }} posts</span>
