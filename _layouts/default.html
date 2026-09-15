@@ -20,11 +20,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="返回首页">
-      <span class="brand-mark">{{ site.title | slice: 0 }}</span>
-      <span>{{ site.title }}</span>
-    </a>
+  <header class="site-header nav-header">
     <nav class="nav" aria-label="主导航">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>文章</a>
       <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about/' %}aria-current="page"{% endif %}>关于</a>
